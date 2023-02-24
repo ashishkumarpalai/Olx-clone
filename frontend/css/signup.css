@@ -11,6 +11,14 @@ h1 {
 }
 
 form {
+    background-color: #ccc;
+    margin: 0 auto;
+    width: 350px;
+    height: 520px;
+    padding: 2em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    background-color: #FFF;
     max-width: 350px;
     margin: 0 auto;
     padding: 20px;

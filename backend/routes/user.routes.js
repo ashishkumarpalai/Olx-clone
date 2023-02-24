@@ -30,7 +30,7 @@ userRouter.post("/register", async (req, res) => {
     }
 
 })
-
+//===============user login
 userRouter.post("/login", async (req, res) => {
     const { email, pass } = req.body
     try {
@@ -52,6 +52,28 @@ userRouter.post("/login", async (req, res) => {
         res.send({ "msg": "something went wrong", "erroe": err.message })
     }
 
+})
+//======================admin login
+userRouter.post("/adminlogin", async (req, res) => {
+    const { email, pass } = req.body
+    try {
+        const user = await UserModel.find({ "email":"admin@gmail.com" })
+        if (user.length > 0) {
+            bcrypt.compare(pass, user[0].pass, function (err, result) {
+                if (result) {
+                    let token = jwt.sign({ userID: user[0]._id }, "masai")
+                    res.send({ "msg": "Login successful", "token": token })
+                } else {
+                    res.send({ "msg": "Wrong Creadential" })
+                }
+            });
+
+        } else {
+            res.send({ "msg": "Wrong Creadential" })
+        }
+    } catch (err) {
+        res.send({ "msg": "something went wrong", "erroe": err.message })
+    }
 })
 
 module.exports = {

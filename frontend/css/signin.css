@@ -7,13 +7,20 @@ body {
 }
 
 #form-signin {
+    margin: 0 auto;
+    width: 350px;
+    height: 300px;
+    padding: 2em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    background-color: #FFF;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 50px;
     border: 1px solid #ccc;
-    background-color: #1A93B1;
+    /* background-color: #1A93B1; */
 }
 
 #form-signin h1 {
