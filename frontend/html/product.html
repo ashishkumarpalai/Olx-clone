@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/product.css">
+</head>
+
+<body>
+    <!-- =====================navbar============= -->
+    <div class="hedder">
+        <div class="navbar">
+            <img src="../img/logo.png" alt="">
+            <div class="contry_select" id="contry">
+                <div class="select">
+                    <p id="text"> Select Your Contry </p>
+                    <i class="fa-solid fa-chevron-down" id="moving"></i>
+                </div>
+                <ul class="option_box" id="list">
+                    <li class="option" onclick="myfunction('USA')">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>Odisha</p>
+                    </li>
+                    <li class="option" onclick="myfunction('Canada')">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>Canada</p>
+                    </li>
+                    <li class="option" onclick="myfunction('India')">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>India</p>
+                    </li>
+                    <li class="option" onclick="myfunction('Pakistan')">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>Pakistan</p>
+                    </li>
+                    <li class="option" onclick="myfunction('New York')">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>New York</p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- =======================search box ============================-->
+            <div class="search_box">
+                <input type="text" class="searchclass" id="searchid" placeholder="Find Cars, mobile phone and More....">
+                <p> <i class="fa-solid fa-magnifying-glass"></i> </p>
+            </div>
+
+            <!-- =======================hindi eng========================= -->
+            <div class="language">
+                <p id="eng_tag"> English </p>
+                <ul class="hin_eng">
+                    <li onclick="languageolx('English')"> English </li>
+                    <li onclick="languageolx('हिन्दी')">हिन्दी</li>
+                </ul>
+            </div>
+
+            <!-- icon -->
+            <div class="messeage">
+                <i class="fa-regular fa-comment"></i>
+            </div>
+
+            <div class="messeage">
+                <i class="fa-regular fa-bell"></i>
+            </div>
+
+            <!-- your logo ya photo -->
+            <div class="your_logo">
+                <div class="girl_img" id="girl_img_id">
+                    <img src="https://tse3.mm.bing.net/th?id=OIP.WRwcG_nGZtGmPpatDlcWPQHaE8&pid=Api&P=0">
+                </div>
+
+                <div class="dropdwon" id="gropdwonid">
+                    <div class="nameandimg">
+                        <img src="https://tse3.mm.bing.net/th?id=OIP.WRwcG_nGZtGmPpatDlcWPQHaE8&pid=Api&P=0">
+                        <p> <a class="accountancor" href="">Account</a></p>
+                    </div>
+
+                    <ul>
+                        <li>
+                            <i class="fa-regular fa-user"></i>
+                            <a class="accountancor" href="../html/signup.html">
+                                <p>Signup</p>
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fa-regular fa-user"></i>
+                            <a class="accountancor" href="../html/signin.html">
+                                <p>Signin</p>
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fa-regular fa-user"></i>
+                            <a class="accountancor" href="../html/adminsignin.html">
+                                <p>Admin</p>
+                            </a>
+                        </li>
+                        <hr>
+                        <li>
+                            <i class="fa-solid fa-box"></i>
+                            <p>My Orders</p>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-gear"></i>
+                            <p>Setting</p>
+                        </li>
+                        <hr>
+
+                        <li>
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <p>Log Out</p>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- selling page -->
+            <div class="selling_page">
+                <button> <i class="fa-solid fa-plus"></i>
+                    <p>SELL</p>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- navbar 2 -->
+    <nav class="menu-icon">
+        <div id="nav2">
+            <a href="#">ALL CATEGORIES</a>
+            <a href="#">Cars</a>
+            <a href="#">Motorcycles</a>
+            <a href="#">Mobile Phones</a>
+            <a href="#">For Sale: Houses & Apartments</a>
+            <a href="#">Scooters</a>
+            <a href="#">Commercial & Other Vehicles</a>
+            <a href="#">For Rent: Houses & Apartments</a>
+
+        </div>
+        <!-- <i class="menu-icon fa fa-bars"></i> -->
+    </nav>
+    <!-- ============================product data -->
+    <div id="maincontainer">
+        <div id="leftdiv">
+            <div>
+                <select name="Filter" class="filter" id="filter">
+                    <option value="">Price</option>
+                    <option value="lth">Low to high</option>
+                    <option value="htl">High to low</option>
+                </select>
+            </div>
+            <div>
+                <select name="Filter" class="filter" id="filter">
+                    <option value="">Bike/Car</option>
+                    <option value="bike">bike</option>
+                    <option value="car">car</option>
+                    <option value="scooter">scooter</option>
+                </select>
+            </div>
+            <div>
+                <select name="Filter" class="filter" id="filter">
+                    <option value="">Location</option>
+                    <option value="bike">bike</option>
+                    <option value="car">car</option>
+                    <option value="scooter">scooter</option>
+                </select>
+            </div>
+        </div>
+        <div id="productcontainer">
+            <div id="product-details">
+                <img src="./frontend/img/logo.png">
+                <h3>Model</h3>
+                <h4>2500</h4>
+                <p>address</p>
+                <p>km</p>
+                <button>add to cart</button>
+            </div>
+        </div>
+    </div>
+    <!-- =============================== * downlode * ============================================ -->
+
+
+    <div class="downlode_app">
+        <div class="downlode">
+            <img src="../img/logo.png" class="imges">
+
+            <div class="text">
+                <h1> TRY THE OLX APP</h1>
+                <p>Buy, sell and find just about anything using <br>
+                    the app on your mobile.</p>
+            </div>
+            <div class="downlode_store">
+                <p> GET YOUR APP TODAY </p>
+                <img src="https://cdn.afterdawn.fi/v3/news/600x400/get-it-on-google-play.jpg" alt="">
+                <img src="https://statics.olx.in/external/base/img/appstore.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================== * footer * ============================================ -->
+
+
+
+    <div class="Main_footer">
+        <div class="footer">
+            <div class="footer_box">
+                <h2>POPULAR LOCATIONS</h2>
+                <p> Kolkata</p>
+                <p>Mumbai</p>
+                <p>Chennai</p>
+                <p>pune</p>
+            </div>
+            <div class="footer_box">
+                <h2>TRENDING LOCATIONS</h2>
+                <p> Bhubaneshwar</p>
+                <p>Hyderabad</p>
+                <p>Chandigarh</p>
+                <p>Nashik</p>
+            </div>
+            <div class="footer_box">
+                <h2>ABOUT US</h2>
+                <p> About OLX Group</p>
+                <p>Careers</p>
+                <p>Contact Us</p>
+                <p>OLXPeople</p>
+            </div>
+            <div class="footer_box">
+                <h2>OLX</h2>
+                <p> Help</p>
+                <p>Legal & Privacy information</p>
+                <p>Blog</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="../src/product.js"></script>

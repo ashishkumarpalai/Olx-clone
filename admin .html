@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  text-align: left;
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+td.actions {
+  text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <table id="quickbites">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      
+</body>
+</html>
+<script>
+const apiUrl = 'https://63c793ede52516043f4041a9.mockapi.io/QuickBite';
+
+function fetchData() {
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const tableBody = document.querySelector('#quickbites tbody');
+      tableBody.innerHTML = '';
+      data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.id}</td>
+          <td>${item.name}</td>
+          <td>${item.price}</td>
+          <td class="actions">
+            <button onclick="editItem(${item.id})">Edit</button>
+            <button onclick="deleteItem(${item.id})">Delete</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    })
+    .catch(error => console.error(error));
+}
+
+function editItem(id) {
+  // Implement edit functionality
+}
+
+function deleteItem(id) {
+  fetch(`${apiUrl}/${id}`, { method: 'DELETE' })
+    .then(response => {
+      if (response.ok) {
+        fetchData();
+      } else {
+        console.error('Failed to delete item');
+      }
+    })
+    .catch(error => console.error(error));
+}
+
+fetchData();
+
+</script>
