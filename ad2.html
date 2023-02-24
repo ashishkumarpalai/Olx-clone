@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  text-align: left;
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+td.actions {
+  text-align: center;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#as{
+    width: 100%;
+    display: flex;
+}
+#as div{
+    width: 50%;
+}
+    </style>
+</head>
+<body>
+    <div id="as">
+        <div >
+            <p>
+                aaa
+            </p>
+        </div>
+        <div>
+            <table id="quickbites">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+        </div>
+    </div>
+      
+      <div id="editModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Edit Item</h2>
+          <form>
+            <label for="editName">Name:</label>
+            <input type="text" id="editName" name="name">
+            <label for="editPrice">Price:</label>
+            <input type="text" id="editPrice" name="price">
+            <input type="submit" value="Save">
+          </form>
+        </div>
+      </div>
+      
+</body>
+</html>
+<script>
+    const apiUrl = 'https://63c793ede52516043f4041a9.mockapi.io/QuickBite';
+const tableBody = document.querySelector('#quickbites tbody');
+const editModal = document.getElementById('editModal');
+const editForm = document.querySelector('#editModal form');
+const editNameInput = document.getElementById('editName');
+const editPriceInput = document.getElementById('editPrice');
+let currentItemId;
+
+function fetchData() {
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      tableBody.innerHTML = '';
+      data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.id}</td>
+          <td>${item.name}</td>
+          <td>${item.price}</td>
+          <td class="actions">
+            <button onclick="openEditModal(${item.id})">Edit</button>
+            <button onclick="deleteItem(${item.id})">Delete</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    })
+    .catch(error => console.error(error));
+}
+
+function openEditModal(id) {
+  currentItemId = id;
+  fetch(`${apiUrl}/${id}`)
+    .then(response => response.json())
+    .then(item => {
+      editNameInput.value = item.name;
+      editPriceInput.value = item.price;
+      editModal.style.display = 'block';
+    })
+    .catch(error => console.error(error));
+}
+
+function closeEditModal() {
+  editModal.style.display = 'none';
+}
+
+function editItem(event) {
+  event.preventDefault();
+  const name = editNameInput.value.trim();
+  const price = editPriceInput.value.trim();
+  if (!name || !price) {
+    console.error('Invalid input');
+    return;
+  }
+  fetch(`${apiUrl}/${currentItemId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, price })
+  })
+    .then(response => {
+      if (response.ok) {
+        fetchData();
+        closeEditModal();
+      } else {
+        console.error('Failed to update item');
+      }
+    })
+    .catch(error => console.error(error));
+}
+
+fetchData();
+editForm.addEventListener('submit', editItem);
+editModal.querySelector('.close').addEventListener('click', closeEditModal);
+
+
+</script>

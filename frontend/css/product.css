@@ -1,0 +1,402 @@
+
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* <!-- =====================navbar============= --> */
+.hedder {
+    background-color: #f7f8f9;
+    box-shadow: 0 0 2px grey;
+    position: sticky;
+    top: 0%;
+}
+
+.navbar {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+}
+
+.navbar img {
+    width: 70px;
+}
+
+.contry_select {
+    width: 250px;
+    margin-left: 70px;
+}
+
+.select i {
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+.select {
+    width: 100%;
+    padding: 10px 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid black;
+}
+
+.option {
+    display: flex;
+    padding: 10px;
+    width: 250px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #c7dcff;
+}
+
+.option p {
+    margin-left: 10px;
+    color: #444444;
+}
+
+.option i {
+    color: #839a9c;
+}
+
+.option_box {
+    box-shadow: 0 0 10px grey;
+    background-color: white;
+    display: none;
+    position: absolute;
+    top: 60px;
+}
+
+.hidden {
+    display: block;
+}
+
+.roted {
+    transform: rotate(180deg);
+}
+
+
+/* ==================search box ===========*/
+.search_box {
+    display: flex;
+    margin-left: 30px;
+}
+
+.search_box i {
+    background-color: black;
+    color: white;
+    padding: 14px;
+    font-size: 15px;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+}
+
+.searchclass {
+    padding: 10px;
+    width: 400px;
+    font-size: 15px;
+    border: 2px solid black;
+    border-radius: 6px 0 0 6px;
+}
+
+/* ======================hindi eng===============  */
+#eng_tag {
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 25px;
+}
+
+.hin_eng {
+    background-color: white;
+    box-shadow: 0 0 10px grey;
+    width: 130px;
+    display: none;
+    position: absolute;
+    top: 60px;
+}
+
+.hin_eng li {
+    list-style: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.hin_eng li:hover {
+    background-color: #c7dcff;
+}
+
+.display_div {
+    display: block;
+}
+
+
+/* icon  */
+.messeage i {
+    font-size: 22px;
+    color: black;
+    cursor: pointer;
+    margin-left: 25px;
+}
+
+/*  */
+.girl_img img {
+    width: 55px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 55px;
+}
+
+.nameandimg img {
+    width: 65px;
+    border-radius: 50%;
+}
+
+.nameandimg p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.nameandimg {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 20px 0;
+}
+
+.dropdwon {
+    width: 250px;
+    box-shadow: 0 0 10px grey;
+    padding: 15px;
+    background-color: white;
+    display: none;
+    position: absolute;
+    top: 60px;
+    z-index: 100;
+}
+
+.dropdwon ul li {
+    display: flex;
+    padding: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.dropdwon ul li:hover {
+    background-color: #c7dcff;
+}
+
+.dropdwon ul {
+    margin-top: 20px;
+}
+
+.dropdwon ul li i {
+    color: black;
+    font-size: 17px;
+}
+
+.dropdwon ul li p {
+    margin-left: 10px;
+    font-size: 17px;
+}
+
+.block_div {
+    display: block;
+}
+
+/* selling  */
+.selling_page button {
+    margin-left: 25px;
+    border-style: solid;
+    border-width: 5px;
+    border-top-color: #23e5db;
+    border-left-color: #ffce32;
+    border-right-color: #3a77ff;
+    border-bottom-color: #3a77ff;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 30px;
+    background-color: white;
+    color: black;
+    display: flex;
+}
+
+.accountancor {
+    text-decoration: none;
+    color: black;
+}
+
+/*=================== navbar2============================ */
+/* Default styles for navigation bar */
+
+#nav2 {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    height: 100%;
+    font-size: 18px;
+    align-items: center;
+}
+
+#nav2 a {
+    text-decoration: none;
+    color: black
+}
+
+nav {
+    width: 100%;
+    background-color: #e4dbdb;
+    height: 70px;
+}
+
+#nav2 a:hover {
+    cursor: pointer;
+    background-color: aqua;
+    font-weight: bold;
+}
+
+/* ============================================================product */
+#maincontainer{
+    padding-top: 20px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    gap: 10px;
+}
+#leftdiv{
+    width: 30%;
+    height: 600px;
+    border: 1px solid red;
+
+    display: flex;
+    flex-direction: column;
+}
+.filter{
+    width: 100%;
+    height: 50px;
+    font-size: large;
+    font-weight: bold;
+}
+#productcontainer{
+    width: 100%;
+    /* border: 10px solid red; */
+    
+}
+#product-details{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    text-align: center;
+   
+} 
+#product-details div{
+    /* border: 10px solid red; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background-color: #c7dcff;
+}
+#product-details>div:hover{
+    color: #007bff;
+}
+#product-details img{
+    width: 100%;
+    height: 240px;
+}
+button {
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0062cc;
+  }
+/* <!-- === * downlode * ================ --> */
+.downlode_app {
+    background-color: #f7f8f9;
+}
+
+.downlode {
+    margin: 100px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    /* width: 100px; */
+}
+
+.imges {
+    width: 20%;
+    height: 100%;
+}
+
+.text {
+    border-right: 2px solid #cacdce;
+}
+
+.text h1 {
+    padding: 20px 20px 10px 20px;
+    font-size: 35px;
+}
+
+.text p {
+    padding: 10px 20px 20px 20px;
+    font-size: 20px;
+}
+
+.downlode_store p {
+    padding: 20px 20px 20px 0;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.downlode_store {
+    padding-left: 30px;
+}
+
+.downlode_store img {
+    width: 140px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+/* ================================================footer */
+/* <!-- ============== * footer * ============================ --> */
+
+
+.Main_footer {
+    background-color: gray;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1200px;
+    margin: auto;
+}
+
+.footer_box h2 {
+    font-size: 17px;
+    margin: 10px 0 15px 0;
+    cursor: pointer;
+}
+
+.footer_box p {
+    margin: 8px 0 8px 0;
+    cursor: pointer;
+}
