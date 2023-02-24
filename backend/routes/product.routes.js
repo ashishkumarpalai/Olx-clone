@@ -4,21 +4,48 @@ const { ProductModel } = require("../model/product.model")
 const productRouter = express.Router()
 
 productRouter.get("/", async (req, res) => {
-    const products = await ProductModel.find()
+    let query=req.query
+    const products = await ProductModel.find(query)
     res.send(products)
 })
+//================home page data start============
 productRouter.get("/homepage", async (req, res) => {
     const products = await ProductModel.find().limit(20)
     res.send(products)
 })
+//=================home page data end=============
+productRouter.get("/search/:key",async(req,res)=>{
+    console.log(req.params.key)
+    let data=await ProductModel.find({
+        "$or":[
+            {"category":{$regex:req.params.key}},
+            {"model":{$regex:req.params.key}},
+            {"km":{$regex:req.params.key}}
+        ]
+    })
+    res.send(data)
+})
+//===============================sorting start=====
+productRouter.get("/lth", async (req, res) => {
+    let query=req.query
+    const products = await ProductModel.find(query).sort({"price":1})
+    res.send(products)
+})
+productRouter.get("/htl", async (req, res) => {
+    let query=req.query
+    const products = await ProductModel.find(query).sort({"price":-1})
+    res.send(products)
+})
+//===============================sorting end=========
+
 productRouter.post("/create", async (req, res) => {
     const payload = req.body
     //single product its show user id
-    // const note = new ProductModel(payload)
-    // await note.save()
+    const note = new ProductModel(payload)
+    await note.save()
 
     // multiple data add but its doesnot show the id
-    const note = await ProductModel.insertMany(payload)
+    // const note = await ProductModel.insertMany(payload)
     res.send({ "msg": "Note created" })
 })
 

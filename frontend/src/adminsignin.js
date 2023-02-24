@@ -1,36 +1,29 @@
-let loginUserUsername = document.getElementById("username");
-let loginUserPassword = document.getElementById("password");
-let loginUserButton = document.getElementById("loginBtn");
-let userLoginURL="https://cobalt-blue-jaguar-boot.cyclic.app/users"
 
-loginUserButton.addEventListener("click",(e)=>{
-  e.preventDefault();
-  fetch("./admin.json")
-  .then((data)=>{
-    return data.json();
-  })
-  .then((res)=>{
-    fetchdata=res;
-    adminsignin(res);
-    
-    console.log(res)
-  })
-  .catch((error)=>{
-    console.log(error)
-  })
-})
-function adminsignin(data){
- 
-  data.forEach((element) => {
-    if(loginUserUsername.value==element.username){
-      if(loginUserPassword.value==element.password){
-        alert("Wellcome To Quick Bite")
-        window.open("./admin.html")
-      }else{
-        alert("Wrong passsword renter your passsword")
-      }
-    }else{
-      alert("You are not admin")
+let form2 = document.getElementById("form")
+form2.addEventListener("submit", (e) => {
+    e.preventDefault()
+    const payload = {
+        email: document.getElementById("username").value,
+        pass: document.getElementById("password").value
     }
-  });
-}
+    fetch("http://localhost:1111/users/adminlogin", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    }).then(res => res.json())
+        .then(res => {
+            if (res.msg === "Login successful") {
+                localStorage.setItem("token", res.token)
+                console.log(res)
+                swal("Login Successful", "", "success")
+                window.open("admin.html")
+            } else if (res.msg === "Wrong Creadential") {
+                swal("email & password did not match");
+                console.log("wrong")
+            }
+
+        })
+        .catch(err => console.log(err.message))
+})

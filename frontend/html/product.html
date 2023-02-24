@@ -46,7 +46,7 @@
 
             <!-- =======================search box ============================-->
             <div class="search_box">
-                <input type="text" class="searchclass" id="searchid" placeholder="Find Cars, mobile phone and More....">
+                <input type="text" onclick="search" class="searchtext" id="searchid" placeholder="Find Cars, mobile phone and More....">
                 <p> <i class="fa-solid fa-magnifying-glass"></i> </p>
             </div>
 
@@ -145,37 +145,36 @@
     <div id="maincontainer">
         <div id="leftdiv">
             <div>
-                <select name="Filter" class="filter" id="filter">
-                    <option value="">Price</option>
+                <select name="Filter" class="filter" id="sortdata">
+                    <option value="">Sort</option>
                     <option value="lth">Low to high</option>
                     <option value="htl">High to low</option>
                 </select>
             </div>
             <div>
-                <select name="Filter" class="filter" id="filter">
-                    <option value="">Bike/Car</option>
-                    <option value="bike">bike</option>
+                <select name="Filter" class="filter" id="model">
+                    <option value="">Filter</option>
                     <option value="car">car</option>
+                    <option value="bike">bike</option>
                     <option value="scooter">scooter</option>
                 </select>
             </div>
             <div>
-                <select name="Filter" class="filter" id="filter">
-                    <option value="">Location</option>
-                    <option value="bike">bike</option>
-                    <option value="car">car</option>
-                    <option value="scooter">scooter</option>
+                <select name="Filter" class="filter" id="verify">
+                    <option value="">Verify Customer</option>
+                    <option value="Verified Seller">verified</option>
+                    <option value="">notverified</option>
                 </select>
             </div>
         </div>
         <div id="productcontainer">
             <div id="product-details">
-                <img src="./frontend/img/logo.png">
+                <!-- <img src="./frontend/img/logo.png">
                 <h3>Model</h3>
                 <h4>2500</h4>
                 <p>address</p>
                 <p>km</p>
-                <button>add to cart</button>
+                <button>add to cart</button> -->
             </div>
         </div>
     </div>

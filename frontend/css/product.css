@@ -276,15 +276,25 @@ nav {
 #leftdiv{
     width: 30%;
     height: 600px;
-    border: 1px solid red;
-
+    /* border: 1px solid red; */
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
 }
+#leftdiv div{
+    padding-top: 50px;
+    
+}
 .filter{
     width: 100%;
-    height: 50px;
-    font-size: large;
+    height: 80px;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+}
+.filter:hover{
+    background-color: #23e5db;
     font-weight: bold;
 }
 #productcontainer{

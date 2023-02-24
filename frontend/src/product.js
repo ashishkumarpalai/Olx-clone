@@ -1,4 +1,4 @@
-
+//===================================product fetch start======================
 const datafetch = () => {
     fetch("http://localhost:1111/products", {
         headers: {
@@ -9,13 +9,12 @@ const datafetch = () => {
         .then(res => res.json())
         .then((res) => {
             displaydata(res)
-            console.log(res)
+            // console.log(res)
         })
         .catch((err) => console.log(err))
 }
 
 datafetch()
-
 function displaydata(data) {
     let main = document.getElementById("product-details")
     main.innerHTML = null;
@@ -36,6 +35,108 @@ function displaydata(data) {
 
     });
 }
+// const search=()=>{
+//     let searchbox=document.querySelector(".searchtext");
+//     let payload={
+//         key:searchbox.value
+//     }
+//     let url=new URL("http://localhost:1111/products/search");
+//     url.search=new URLSearchParams(payload).toString()
+//     fetch(url,{
+//         headers:{
+//             "Content-type":"application/json",
+//             Authorization:localStorage.getItem("token")
+//         }
+//     })
+//     .then((res)=>res.json())
+//     .then((res)=>{
+//         console.log(res)
+//         displaydata(res)
+//     })
+//     .catch((err)=>console.log(err))
+// }
+// search()
+// document.querySelector(".se")
+// ===========================product fetch end==================================
+// ==========================sorting price start=================================
+document.getElementById("sortdata").addEventListener("change", (e) => {
+    let sortby = e.target.value;
+    if (sortby == "lth") {
+        data = "http://localhost:1111/products/lth"
+    } else if (sortby == "htl") {
+        data = "http://localhost:1111/products/htl"
+    }
+    else {
+        data = "http://localhost:1111/products/"
+    }
+    fetch(data, {
+        headers: {
+            "Content-type": "application/json",
+            Authorization: localStorage.getItem("token")
+        }
+    })
+        .then(res => res.json())
+        .then((res) => {
+            displaydata(res)
+            console.log(res)
+        })
+        .catch((err) => console.log(err))
+
+})
+// =========================sorting price end===================================
+// =========================model filter start=================================
+document.getElementById("model").addEventListener("change", (e) => {
+    let sortby = e.target.value;
+
+    if (sortby == "") {
+        fetch(`http://localhost:1111/products`, {
+            headers: {
+                "Content-type": "application/json",
+                Authorization: localStorage.getItem("token")
+            }
+        })
+            .then(res => res.json())
+            .then((res) => {
+                displaydata(res)
+                console.log(res)
+            })
+            .catch((err) => console.log(err))
+    } else {
+        fetch(`http://localhost:1111/products/?category=${sortby}`, {
+            headers: {
+                "Content-type": "application/json",
+                Authorization: localStorage.getItem("token")
+            }
+        })
+            .then(res => res.json())
+            .then((res) => {
+                displaydata(res)
+                console.log(res)
+            })
+            .catch((err) => console.log(err))
+    }
+
+})
+// =========================model filter start==================================
+// =========================custumer filter start==============================
+document.getElementById("verify").addEventListener("change", (e) => {
+    let sortby = e.target.value;
+
+    fetch(`http://localhost:1111/products/?verified=${sortby}`, {
+        headers: {
+            "Content-type": "application/json",
+            Authorization: localStorage.getItem("token")
+        }
+    })
+        .then(res => res.json())
+        .then((res) => {
+            displaydata(res)
+            console.log(res)
+        })
+        .catch((err) => console.log(err))
+
+})
+// =============================custumer filter end==========================
 
 let contry = document.getElementById('contry');
 let moving = document.getElementById('moving');
