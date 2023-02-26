@@ -1,5 +1,5 @@
 const showdata = () => {
-    fetch("http://localhost:1111/addtocarts", {
+    fetch("https://worried-tweed-jacket-calf.cyclic.app/addtocarts", {
         headers: {
             "Content-type": "application/json",
             Authorization: localStorage.getItem("token")
@@ -40,7 +40,7 @@ main.addEventListener("click", (event) => {
     const payload = {
         image: cardElement.querySelector("img").src,
     };
-    fetch("http://localhost:1111/addtocarts/delete", {
+    fetch("https://worried-tweed-jacket-calf.cyclic.app/addtocarts/delete", {
         method: "DELETE",
         headers: {
             "Content-type": "application/json",

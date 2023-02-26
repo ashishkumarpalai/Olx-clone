@@ -10,7 +10,7 @@ form1.addEventListener("submit", (e) => {
         city: document.getElementById("city").value,
         pass: document.getElementById("password").value
     }
-    fetch("http://localhost:1111/users/register", {
+    fetch("https://worried-tweed-jacket-calf.cyclic.app/users/register", {
         method: "POST",
         headers: {
             "Content-type": "application/json"

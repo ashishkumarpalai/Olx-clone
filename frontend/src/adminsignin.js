@@ -6,7 +6,7 @@ form2.addEventListener("submit", (e) => {
         email: document.getElementById("username").value,
         pass: document.getElementById("password").value
     }
-    fetch("http://localhost:1111/users/adminlogin", {
+    fetch("https://worried-tweed-jacket-calf.cyclic.app/users/adminlogin", {
         method: "POST",
         headers: {
             "Content-type": "application/json"
