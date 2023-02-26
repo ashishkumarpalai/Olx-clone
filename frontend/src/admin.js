@@ -39,7 +39,7 @@ async function handleAdd(){
     console.log(obj);
  // POST 
    
-  let resp=await fetch("http://localhost:1111/products/",{
+  let resp=await fetch("https://worried-tweed-jacket-calf.cyclic.app/products/",{
     method:"POST",
     headers:{'Content-type': 'application/json'},
     body:JSON.stringify(obj)
@@ -53,7 +53,7 @@ async function handleAdd(){
 
 
 // Fetch data from the API and populate the tables
-fetch("http://localhost:1111/products/adata")
+fetch("https://worried-tweed-jacket-calf.cyclic.app/products/adata")
   .then(response => response.json())
   .then(data => {
     // Populate the menu table
@@ -86,7 +86,7 @@ fetch("http://localhost:1111/products/adata")
         const id = event.target.getAttribute('data-id');
         if (confirm(`Are you sure you want to delete item with ID: ${id}`)) {
           // Delete item from API
-          fetch(`http://localhost:1111/products/${id}`, {
+          fetch(`https://worried-tweed-jacket-calf.cyclic.app/products/${id}`, {
             method: 'DELETE'
           })
           .then(response => {
@@ -126,7 +126,7 @@ fetch("http://localhost:1111/products/adata")
   // Show a form to edit the menu item
   // ...
 }
-fetch("http://localhost:1111/users")
+fetch("https://worried-tweed-jacket-calf.cyclic.app/users")
   .then(response => response.json())
   .then(data => {
     // Populate the menu table
@@ -179,7 +179,7 @@ function handleDelete(e) {
 }
 // total Product---------------------------------------------------------------------------------total product count start
 function total(){
-  fetch('http://localhost:1111/products/adata')
+  fetch('https://worried-tweed-jacket-calf.cyclic.app/products/adata')
     .then(response => response.json())
     .then(data => {
         // count the total number of products

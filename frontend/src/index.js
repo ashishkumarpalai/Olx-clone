@@ -50,7 +50,7 @@ ad_icon.addEventListener('click', () => {
 });
 ///////data hoe
 const datafetch = () => {
-    fetch("http://localhost:1111/products/homepage", {
+    fetch("https://worried-tweed-jacket-calf.cyclic.app/products/homepage", {
         headers: {
             "Content-type": "application/json",
             // Authorization: localStorage.getItem("token")
@@ -94,7 +94,7 @@ const search=()=>{
         if (key.trim() === "") {
             return;
         }
-        fetch(`http://localhost:1111/products/search/${key}`)
+        fetch(`https://worried-tweed-jacket-calf.cyclic.app/products/search/${key}`)
             .then(response => response.json())
             .then(res => {
                 // Display the search results in the UI

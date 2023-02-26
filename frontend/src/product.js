@@ -1,6 +1,6 @@
 //===================================product fetch start======================
 const datafetch = () => {
-    fetch("http://localhost:1111/products", {
+    fetch("https://worried-tweed-jacket-calf.cyclic.app/products", {
         headers: {
             "Content-type": "application/json",
             Authorization: localStorage.getItem("token")
@@ -16,7 +16,7 @@ const datafetch = () => {
 
 datafetch()
 const dataafetch = () => {
-    fetch("http://localhost:1111/products/p", {
+    fetch("https://worried-tweed-jacket-calf.cyclic.app/products/p", {
         headers: {
             "Content-type": "application/json",
             Authorization: localStorage.getItem("token")
@@ -65,7 +65,7 @@ main.addEventListener("click", (event) => {
         km:cardElement.querySelector("#akm").textContent,
         quantity:"1"
     }
-    fetch("http://localhost:1111/addtocarts/create", {
+    fetch("https://worried-tweed-jacket-calf.cyclic.app/addtocarts/create", {
         method: "POST",
         headers: {
             "Content-type": "application/json",
@@ -99,7 +99,7 @@ const search = () => {
         if (key.trim() === "") {
             return;
         }
-        fetch(`http://localhost:1111/products/search/${key}`)
+        fetch(`https://worried-tweed-jacket-calf.cyclic.app/products/search/${key}`)
             .then(response => response.json())
             .then(data => {
                 // Display the search results in the UI
@@ -133,12 +133,12 @@ document.getElementById("addtocartpage").addEventListener("click", () => {
 document.getElementById("sortdata").addEventListener("change", (e) => {
     let sortby = e.target.value;
     if (sortby == "lth") {
-        data = "http://localhost:1111/products/lth"
+        data = "https://worried-tweed-jacket-calf.cyclic.app/products/lth"
     } else if (sortby == "htl") {
-        data = "http://localhost:1111/products/htl"
+        data = "https://worried-tweed-jacket-calf.cyclic.app/products/htl"
     }
     else {
-        data = "http://localhost:1111/products/"
+        data = "https://worried-tweed-jacket-calf.cyclic.app/products/"
     }
     fetch(data, {
         headers: {
@@ -160,7 +160,7 @@ document.getElementById("model").addEventListener("change", (e) => {
     let sortby = e.target.value;
 
     if (sortby == "") {
-        fetch(`http://localhost:1111/products`, {
+        fetch(`https://worried-tweed-jacket-calf.cyclic.app/products`, {
             headers: {
                 "Content-type": "application/json",
                 Authorization: localStorage.getItem("token")
@@ -173,7 +173,7 @@ document.getElementById("model").addEventListener("change", (e) => {
             })
             .catch((err) => console.log(err))
     } else {
-        fetch(`http://localhost:1111/products/?category=${sortby}`, {
+        fetch(`https://worried-tweed-jacket-calf.cyclic.app/products/?category=${sortby}`, {
             headers: {
                 "Content-type": "application/json",
                 Authorization: localStorage.getItem("token")
@@ -193,7 +193,7 @@ document.getElementById("model").addEventListener("change", (e) => {
 document.getElementById("verify").addEventListener("change", (e) => {
     let sortby = e.target.value;
 
-    fetch(`http://localhost:1111/products/?verified=${sortby}`, {
+    fetch(`https://worried-tweed-jacket-calf.cyclic.app/products/?verified=${sortby}`, {
         headers: {
             "Content-type": "application/json",
             Authorization: localStorage.getItem("token")
