@@ -1,55 +1,112 @@
 const express = require("express")
 const { ProductModel } = require("../model/product.model")
+const { authenticate } = require("../middlewares/authenticate.middlewares")
 
 const productRouter = express.Router()
-
-productRouter.get("/", async (req, res) => {
-    let query=req.query
-    const products = await ProductModel.find(query)
-    res.send(products)
-})
-//================home page data start============
 productRouter.get("/homepage", async (req, res) => {
     const products = await ProductModel.find().limit(20)
     res.send(products)
 })
+productRouter.get("/",authenticate, async (req, res) => {
+    let query = req.query
+    try{
+        const products = await ProductModel.find(query)
+        res.send(products)
+    }catch (err){
+        res.send({"msg":"something err","error":err})
+    }
+})
+productRouter.get("/adata", async (req, res) => {
+    let query = req.query
+    try{
+        const products = await ProductModel.find(query)
+        res.send(products)
+    }catch (err){
+        res.send({"msg":"something err","error":err})
+    }
+})
+productRouter.post("/createe", async (req, res) => {
+    const payload = req.body
+    //single product its show user id
+    try {
+        const note =  new ProductModel(payload)
+        await note.save()
+        res.send(note)
+        // multiple data add but its doesnot show the id
+        // const note = await ProductModel.insertMany(payload)
+    } catch (error) {
+        res.send({ "msg": "Note created" ,"err":error.message})
+    }
+
+
+})
+productRouter.get("/:id",authenticate, async (req, res) => {
+    let id = req.params.id
+    try{
+        const products = await ProductModel.find({"_id":id})
+        res.send(products)
+    }catch (err){
+        res.send({"msg":"something err","error":err})
+    }
+})
+productRouter.get("/p",authenticate,async (req,res)=>{
+    try{
+        let cartdata= await ProductModel.find()
+        res.send(cartdata)
+    }catch(error){
+        res.send(error.message)
+        console.log(error.message)
+    } 
+    
+})
+//================home page data start============
+
 //=================home page data end=============
-productRouter.get("/search/:key",async(req,res)=>{
+// =========search product=======
+productRouter.get("/search/:key", async (req, res) => {
     console.log(req.params.key)
-    let data=await ProductModel.find({
-        "$or":[
-            {"category":{$regex:req.params.key}},
-            {"model":{$regex:req.params.key}},
-            {"km":{$regex:req.params.key}}
+    let data = await ProductModel.find({
+        "$or": [
+            { "category": { $regex: req.params.key } },
+            { "model": { $regex: req.params.key } },
+            // { "km": { $regex: req.params.key } }
         ]
     })
     res.send(data)
 })
+
+//=========product cart================
+
 //===============================sorting start=====
-productRouter.get("/lth", async (req, res) => {
-    let query=req.query
-    const products = await ProductModel.find(query).sort({"price":1})
+productRouter.get("/lth", authenticate, async (req, res) => {
+    let query = req.query
+    const products = await ProductModel.find(query).sort({ "price": 1 })
     res.send(products)
 })
-productRouter.get("/htl", async (req, res) => {
-    let query=req.query
-    const products = await ProductModel.find(query).sort({"price":-1})
+productRouter.get("/htl", authenticate, async (req, res) => {
+    let query = req.query
+    const products = await ProductModel.find(query).sort({ "price": -1 })
     res.send(products)
 })
 //===============================sorting end=========
 
-productRouter.post("/create", async (req, res) => {
+productRouter.post("/create", authenticate, async (req, res) => {
     const payload = req.body
     //single product its show user id
-    const note = new ProductModel(payload)
-    await note.save()
+    try {
+        const note =  new ProductModel(payload)
+        await note.save()
+        res.send(note)
+        // multiple data add but its doesnot show the id
+        // const note = await ProductModel.insertMany(payload)
+    } catch (error) {
+        res.send({ "msg": "Note created" ,"err":error.message})
+    }
 
-    // multiple data add but its doesnot show the id
-    // const note = await ProductModel.insertMany(payload)
-    res.send({ "msg": "Note created" })
+
 })
 
-productRouter.patch("/update/:id", async (req, res) => {
+productRouter.patch("/update/:id", authenticate, async (req, res) => {
     const id = req.params.id
     const payload = req.body
     const note = await ProductModel.findOne({ "_id": id })
@@ -69,7 +126,7 @@ productRouter.patch("/update/:id", async (req, res) => {
     }
 })
 
-productRouter.delete("/delete/:id", async (req, res) => {
+productRouter.delete("/:id", authenticate, async (req, res) => {
     const id = req.params.id
     const note = await ProductModel.findOne({ "_id": id })
     const userID_in_note = note.user

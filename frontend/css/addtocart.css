@@ -1,4 +1,3 @@
-
 * {
     margin: 0%;
     padding: 0%;
@@ -264,77 +263,86 @@ nav {
     background-color: aqua;
     font-weight: bold;
 }
-
-/* ============================================================product */
-#maincontainer{
-    padding-top: 20px;
+/* ==============================================product data */
+#container{
     width: 90%;
+    /* border: 1px solid red; */
     margin: auto;
     display: flex;
     gap: 10px;
+    margin-top: 10px;
 }
-#leftdiv{
-    width: 30%;
-    height: 600px;
-    /* border: 1px solid red; */
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
+hr{
+    font-size: larger;
 }
-#leftdiv div{
-    padding-top: 50px;
-    
-}
-.filter{
-    width: 100%;
-    height: 80px;
-    font-size: 30px;
-    font-weight: bold;
-    border-radius: 5px;
-    text-align: center;
-}
-.filter:hover{
-    background-color: #23e5db;
-    font-weight: bold;
-}
-#productcontainer{
-    width: 100%;
-    /* border: 10px solid red; */
-    
-}
-#product-details{
+.left{
+    width: 75%;
+    /* border: 1px solid blue; */
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 10px;
+}
+.left div{
+    width: 100%;
     text-align: center;
-   
-} 
-#product-details div{
-    /* border: 10px solid red; */
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     background-color: #c7dcff;
 }
-#product-details>div:hover{
-    color: #007bff;
-}
-#product-details img{
+.left div img{
     width: 100%;
-    height: 340px;
+    height: 350px;
 }
-button {
+.deletee{
     margin-bottom: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
     border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-  }
+    width: 100px;
+    font-size: medium;
+    font-weight: bold;
+}
+.deletee:hover{
+    background-color: #3a77ff;
+    color: white;
+}
+#right{
+    margin-top: 50px;
+    width: 25%;
+    border: 1px solid black;
+    text-align: center;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #4cd7e3;
+    position: sticky;
+    position: fixed;
+    margin-left: 69%;
+}
+#right:hover{
+    background-color: #ee6565;
+}
+#buttonn{
+    border-radius: 5px;
+    width: 50%;
+    height: 30px;
+    margin: auto;
+    font-size: medium;
+    font-weight: bold;
+}
+#buttonn:hover{
+    background-color: #3a77ff;
+    color: white;
+}
 
-  button:hover {
-    background-color: #0062cc;
-  }
+
+
+
+
+
+
+
+
+
+
 /* <!-- === * downlode * ================ --> */
 .downlode_app {
     background-color: #f7f8f9;

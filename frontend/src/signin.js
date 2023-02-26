@@ -16,6 +16,8 @@ form2.addEventListener("submit", (e) => {
         .then(res => {
             if (res.msg === "Login successful") {
                 localStorage.setItem("token", res.token)
+                localStorage.setItem("user", res.user[0]._id)
+                localStorage.setItem("name", res.user[0].name)
                 console.log(res)
                 swal("Login Successful", "", "success")
                 window.open("product.html")
@@ -25,5 +27,5 @@ form2.addEventListener("submit", (e) => {
             }
 
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err.message))
 })

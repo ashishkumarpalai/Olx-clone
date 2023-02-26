@@ -53,13 +53,13 @@ const datafetch = () => {
     fetch("http://localhost:1111/products/homepage", {
         headers: {
             "Content-type": "application/json",
-            Authorization: localStorage.getItem("token")
+            // Authorization: localStorage.getItem("token")
         }
     })
         .then(res => res.json())
         .then((res) => {
             displaydata(res)
-            console.log(res)
+            // console.log(res)
         })
         .catch((err) => console.log(err))
 }
@@ -84,5 +84,28 @@ function displaydata(data) {
        
     });
 }
+// ==========search start
+const search=()=>{
+    const searchBtn = document.getElementById("searchbtn");
+    const searchInput = document.getElementById("searchid");
 
-
+    searchBtn.addEventListener("click",() => {
+        const key = searchInput.value;
+        if (key.trim() === "") {
+            return;
+        }
+        fetch(`http://localhost:1111/products/search/${key}`)
+            .then(response => response.json())
+            .then(res => {
+                // Display the search results in the UI
+                displaydata(res)
+                
+                // console.log(res);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    });
+}
+search()
+// =============search end

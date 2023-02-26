@@ -9,55 +9,126 @@ const datafetch = () => {
         .then(res => res.json())
         .then((res) => {
             displaydata(res)
-            // console.log(res)
+            console.log(res)
         })
         .catch((err) => console.log(err))
 }
 
 datafetch()
+const dataafetch = () => {
+    fetch("http://localhost:1111/products/p", {
+        headers: {
+            "Content-type": "application/json",
+            Authorization: localStorage.getItem("token")
+        }
+    })
+        .then(res => res.json())
+        .then((res) => {
+            displaydata(res)
+            // console.log(res)
+        })
+        .catch((err) => console.log(err))
+}
+
+dataafetch()
 function displaydata(data) {
     let main = document.getElementById("product-details")
     main.innerHTML = null;
     data.forEach(element => {
         main.innerHTML += `
-            <div >
+            <div class="addtocart">
                 <img src=${element.image} alt="">
-                <h3>Model:${element.model}</h3>
-                <h4>$:${element.price}</h4>
-                <p>Address:${element.adress}</p>
-                <p>KM:${element.km}</p>
-        <div>
-          <button>Add to Cart</button>
-          <button>Chat with Seller</button>
-        </div>
-      </div>
+                <h3 id="amodel">Model:${element.model}</h3>
+                <h4 id="aprice">${element.price}</h4>
+                <p id="aadress">Address:${element.adress}</p>
+                <p id="akm">KM:${element.km}</p>
+                <div>
+                <button class="pbtn">Add to Cart</button>
+                <button id="chat">Chat with Seller</button>
+                </div>
+            </div>
             `
-
     });
 }
-// const search=()=>{
-//     let searchbox=document.querySelector(".searchtext");
-//     let payload={
-//         key:searchbox.value
-//     }
-//     let url=new URL("http://localhost:1111/products/search");
-//     url.search=new URLSearchParams(payload).toString()
-//     fetch(url,{
-//         headers:{
-//             "Content-type":"application/json",
-//             Authorization:localStorage.getItem("token")
-//         }
-//     })
-//     .then((res)=>res.json())
-//     .then((res)=>{
-//         console.log(res)
-//         displaydata(res)
-//     })
-//     .catch((err)=>console.log(err))
-// }
-// search()
-// document.querySelector(".se")
 // ===========================product fetch end==================================
+// product added add to cart start
+let main=document.getElementById("productcontainer")
+main.addEventListener("click", (event) => {
+    if(event.target.classList.contains("pbtn")){
+        let cardElement=event.target.closest(".addtocart")
+    
+    let payload={
+        image:cardElement.querySelector("img").src,
+        model:cardElement.querySelector("#amodel").textContent,
+        price:cardElement.querySelector("#aprice").textContent,
+        adress:cardElement.querySelector("#aadress").textContent,
+        km:cardElement.querySelector("#akm").textContent,
+        quantity:"1"
+    }
+    fetch("http://localhost:1111/addtocarts/create", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+            Authorization:localStorage.getItem("token")
+        },
+        body: JSON.stringify(payload)
+    }).then(res => res.json())
+        .then((res) => {
+            if (res.msg === "Product is already in cart") {
+                alert("product already in cart");
+            } else {
+                console.log(res)
+
+                alert("Product successfully added")
+            }
+
+        })
+        .catch(err => console.log(err))
+    }
+})
+// product data add ti cart end
+// ====================delete add=========================
+
+// =========search start=============
+const search = () => {
+    const searchBtn = document.getElementById("searchbtn");
+    const searchInput = document.getElementById("searchid");
+
+    searchBtn.addEventListener("click", () => {
+        const key = searchInput.value;
+        if (key.trim() === "") {
+            return;
+        }
+        fetch(`http://localhost:1111/products/search/${key}`)
+            .then(response => response.json())
+            .then(data => {
+                // Display the search results in the UI
+                displaydata(data)
+
+                // console.log(data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    });
+}
+search()
+//==========search end=================
+//=================logout start=========================
+const account = document.getElementById("account")
+account.innerText = localStorage.getItem("name")
+document.getElementById("logout").addEventListener("click", () => {
+    localStorage.clear();
+    window.open("index.html")
+})
+//=============logout end=========================
+
+// ===================add to cart page redirect start
+document.getElementById("addtocartpage").addEventListener("click", () => {
+    window.open("addtocart.html")
+})
+// ===============================add to cart page redirect end
+
 // ==========================sorting price start=================================
 document.getElementById("sortdata").addEventListener("change", (e) => {
     let sortby = e.target.value;
