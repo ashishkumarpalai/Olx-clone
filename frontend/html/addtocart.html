@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OLXCLONE</title>
+    <title>Add to cart</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/addtocart.css">
 </head>
 
 <body>
-
     <!-- =====================navbar============= -->
     <div class="hedder">
         <div class="navbar">
@@ -47,8 +46,9 @@
 
             <!-- =======================search box ============================-->
             <div class="search_box">
-                <input type="text" onclick="search" class="searchtext" id="searchid" placeholder="Find Cars, mobile phone and More...."/>
-                <p> <i class="fa-solid fa-magnifying-glass"  id="searchbtn"></i> </p>
+                <input type="text" onclick="search" class="searchtext" id="searchid"
+                    placeholder="Find Cars, mobile phone and More...." />
+                <p> <i class="fa-solid fa-magnifying-glass" id="searchbtn"></i> </p>
             </div>
 
             <!-- =======================hindi eng========================= -->
@@ -78,27 +78,33 @@
                 <div class="dropdwon" id="gropdwonid">
                     <div class="nameandimg">
                         <img src="https://tse3.mm.bing.net/th?id=OIP.WRwcG_nGZtGmPpatDlcWPQHaE8&pid=Api&P=0">
-                        <p> <a class="accountancor" href="">Account</a></p>
+                        <p> <a class="accountancor" id="account" href="">Account</a></p>
                     </div>
-                    
+
                     <ul>
-                        <li>
+                        <!-- <li>
                             <i class="fa-regular fa-user"></i>
-                            <a class="accountancor" href="../html/signup.html"><p>Signup</p></a>
+                            <a class="accountancor" href="../html/signup.html">
+                                <p>Signup</p>
+                            </a>
                         </li>
                         <li>
                             <i class="fa-regular fa-user"></i>
-                            <a  class="accountancor" href="../html/signin.html"><p>Signin</p></a>
-                        </li>
+                            <a class="accountancor" href="../html/signin.html">
+                                <p>Signin</p>
+                            </a>
+                        </li> -->
                         <li>
                             <i class="fa-regular fa-user"></i>
-                            <a  class="accountancor" href="../html/adminsignin.html"><p>Admin</p></a>
+                            <a class="accountancor" href="../html/adminsignin.html">
+                                <p>Admin</p>
+                            </a>
                         </li>
                         <hr>
-                        <li>
+                        <!-- <li>
                             <i class="fa-solid fa-box"></i>
                             <p>My Orders</p>
-                        </li>
+                        </li> -->
                         <li>
                             <i class="fa-solid fa-gear"></i>
                             <p>Setting</p>
@@ -107,7 +113,7 @@
 
                         <li>
                             <i class="fa-solid fa-right-from-bracket"></i>
-                            <p>Log Out</p>
+                            <p id="logout" onclick="logout()">Log Out</p>
                         </li>
 
                     </ul>
@@ -124,36 +130,48 @@
     <!-- navbar 2 -->
     <nav class="menu-icon">
         <div id="nav2">
-          <a href="signin.html">ALL CATEGORIES</a>
-          <a href="signin.html">Cars</a>
-          <a href="signin.html">Motorcycles</a>
-          <a href="signin.html">Mobile Phones</a>
-          <a href="signin.html">For Sale: Houses & Apartments</a>
-          <a href="signin.html">Scooters</a>
-          <a href="signin.html">Commercial & Other Vehicles</a>
-          <a href="signin.html">For Rent: Houses & Apartments</a>
-          
+            <a href="#">ALL CATEGORIES</a>
+            <a href="#">Cars</a>
+            <a href="#">Motorcycles</a>
+            <a href="#">Mobile Phones</a>
+            <a href="#">For Sale: Houses & Apartments</a>
+            <a href="#">Scooters</a>
+            <a href="#">Commercial & Other Vehicles</a>
+            <a href="#">For Rent: Houses & Apartments</a>
+
         </div>
         <!-- <i class="menu-icon fa fa-bars"></i> -->
-      </nav>
-    
-      
-    <!-- ========================Add one -->
-    <div class="ad_img">
-        <img src="../img/Screenshot (1399).png">
-        <i class="fa-regular fa-rectangle-xmark" id="ad_icon"></i>
-    </div>
-    <div id="rightcontainer">
-        <!-- <a href="../html/signin.html">
-            <div >
-                <img src="../img/Screenshot (1399).png" alt="">
+    </nav>
+    <!-- ============================product data -->
+    <div id="container">
+        <div class="left">
+            <div class="singleDiv">
+                <img src="../img/logo.png">
                 <h3>Model</h3>
                 <h4>2500</h4>
                 <p>address</p>
                 <p>km</p>
-                <button>add to cart</button>
+                <button class="deletee">Delete</button>
+            
             </div>
-        </a> -->
+            
+        </div>
+        <hr>
+        <div id="right">
+            <br>
+            <div>
+                <h2>Details</h2>
+            </div>
+            <br>
+            <div>
+                <h3 >Price :<span id="showprice">0</span></h3>
+                <br>
+                <h4 >Quantity : <span id="showq">0</span></h4>
+
+            </div>
+            <div></div>
+            <button id="buttonn">Checkout</button>
+        </div>
     </div>
     <!-- =============================== * downlode * ============================================ -->
 
@@ -210,7 +228,8 @@
             </div>
         </div>
     </div>
+
 </body>
 
 </html>
-<script src="../src/index.js"></script>
+<script src="../src/addtocart.js"></script>

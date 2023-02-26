@@ -46,8 +46,8 @@
 
             <!-- =======================search box ============================-->
             <div class="search_box">
-                <input type="text" onclick="search" class="searchtext" id="searchid" placeholder="Find Cars, mobile phone and More....">
-                <p> <i class="fa-solid fa-magnifying-glass"></i> </p>
+                <input type="text" onclick="search" class="searchtext" id="searchid" placeholder="Find Cars, mobile phone and More...."/>
+                <p> <i class="fa-solid fa-magnifying-glass"  id="searchbtn"></i> </p>
             </div>
 
             <!-- =======================hindi eng========================= -->
@@ -77,11 +77,11 @@
                 <div class="dropdwon" id="gropdwonid">
                     <div class="nameandimg">
                         <img src="https://tse3.mm.bing.net/th?id=OIP.WRwcG_nGZtGmPpatDlcWPQHaE8&pid=Api&P=0">
-                        <p> <a class="accountancor" href="">Account</a></p>
+                        <p > <a class="accountancor" id="account" href="">Account</a></p>
                     </div>
 
                     <ul>
-                        <li>
+                        <!-- <li>
                             <i class="fa-regular fa-user"></i>
                             <a class="accountancor" href="../html/signup.html">
                                 <p>Signup</p>
@@ -92,7 +92,7 @@
                             <a class="accountancor" href="../html/signin.html">
                                 <p>Signin</p>
                             </a>
-                        </li>
+                        </li> -->
                         <li>
                             <i class="fa-regular fa-user"></i>
                             <a class="accountancor" href="../html/adminsignin.html">
@@ -102,7 +102,7 @@
                         <hr>
                         <li>
                             <i class="fa-solid fa-box"></i>
-                            <p>My Orders</p>
+                            <p id="addtocartpage">Cart Data</p>
                         </li>
                         <li>
                             <i class="fa-solid fa-gear"></i>
@@ -112,7 +112,7 @@
 
                         <li>
                             <i class="fa-solid fa-right-from-bracket"></i>
-                            <p>Log Out</p>
+                            <p id="logout" onclick="logout()">Log Out</p>
                         </li>
 
                     </ul>
@@ -174,7 +174,7 @@
                 <h4>2500</h4>
                 <p>address</p>
                 <p>km</p>
-                <button>add to cart</button> -->
+                <button class="pbtn">add to cart</button> -->
             </div>
         </div>
     </div>

@@ -4,6 +4,7 @@ require('dotenv').config()
 
 const { userRouter } = require("./routes/user.routes")
 const { productRouter } = require("./routes/product.routes")
+const {addtocartRouter}=require("./routes/addtocart.routes")
 const { authenticate } = require("./middlewares/authenticate.middlewares")
 const cors=require("cors")
 
@@ -17,8 +18,9 @@ app.get("/", (req, res) => {
 })
 
 app.use("/users", userRouter)
-app.use(authenticate)
+// app.use(authenticate)
 app.use("/products", productRouter)
+app.use("/addtocarts",addtocartRouter)
 
 app.listen(process.env.port, async () => {
     try {
