@@ -1,5 +1,7 @@
 # Market Zone
 
+> This website is a clone of "OLX" E-commers website . The OLX marketplace is a platform for buying and selling services and goods such as electronics, fashion items, furniture, household goods, cars and bikes.
+
 ## TechStack used
 
 ### Frontend
