@@ -1,18 +1,18 @@
 # Market Zone
 
-# TechStack used
+## TechStack used
 
-## Frontend
+### Frontend
 + HTML
 + CSS
 + JAVASCRIPT
 
-## Backend
+### Backend
 + mongoDb Atlash
 + nodejs
 + express
 
-# Content of Website
+### Content of Website
 + User Login
 + Admin Login 
 + Home Page
